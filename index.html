@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<title>Uploader</title>
+</head>
+<body>
+	<h1>Upload files to your GDrive directly from URL</h1>
+	<form method="post" action="">
+		<label> Enter the URL : </label> <input type="text" name="myfile"
+			id="url" size="85"> <br> <br> <input type="button"
+			id="submit" value="Submit"> <label id="resp"> </label>
+
+		<script type="text/javascript">
+			document.getElementbyId('submit').addEventListener(
+					'click',
+					function(e) {
+						var url = document.getElementById('url').value;
+						google.script.run.withSuccesssHandler(onSuccess)
+								.upload(url);
+					})
+			function onSuccess() {
+				document.getElementById('resp').innerHTML = "File Uploaded"
+						+ url
+			}
+		</script>
+	</form>
+</body>
+</html>
